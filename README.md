@@ -1,5 +1,10 @@
 # lectly-backend-user
-commands to use: 
-npm run dev ( for live development )
 
-npm run build ( to build the javascript "dist folder" from the typescript "src folder"
+## Getting started
+
+To get the server running locally:
+
+- Clone this repo
+- `npm install` to install all required dependencies
+- `npm run watch` to compile and watch for changes
+- `npm start` to start the node server
