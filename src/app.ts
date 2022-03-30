@@ -1,12 +1,28 @@
 import express, { Application, Request, Response } from "express";
+import dotenv from "dotenv";
+import morgan from "morgan";
+import cors from "cors";
+import { router } from "./routes";
 
-const PORT = process.env.port || 5000;
+/******* Environment variables *******/
+const PORT = process.env.PORT || 5000;
 
+/****** Setting up Express app *******/
 const app: Application = express();
+app.use(express.json());
+app.use(cors());
 
+/******* Morgan Logger *******/
+app.use(morgan("dev"));
+
+/****** Setting up Express routes *******/
 app.get("/", function (req: Request, res: Response) {
-    res.send("<h1>Hello from index page</h1>");
+  res.status(200).send("App Working!");
 });
-app.use('/api/v1',require('./routes/api/v1'));
 
-app.listen(PORT, () => console.log("listening on port: " + PORT));
+app.use("/", router);
+
+/****** Setting up Express app server *******/
+app.listen(PORT, () =>
+  console.log("\x1b[32m%s\x1b[0m", "Express app listening on port: " + PORT)
+);
