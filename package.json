@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "watch": "tsc -w",
-    "start": "node dist/app.js",
+    "start": "node dist/src/app.js",
     "build": "tsc -p ."
+    
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "firebase-admin": "^10.0.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
