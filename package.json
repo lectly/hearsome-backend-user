@@ -5,9 +5,8 @@
   "main": "app.js",
   "scripts": {
     "watch": "tsc -w",
-    "start": "node dist/src/app.js",
+    "start": "node dist/app.js",
     "build": "tsc -p ."
-    
   },
   "repository": {
     "type": "git",
