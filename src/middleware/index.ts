@@ -1,2 +1,2 @@
-import { verifyToken } from "./auth.middleware";
-export { verifyToken };
+import { userAuth } from "./userAuth";
+export { userAuth };
