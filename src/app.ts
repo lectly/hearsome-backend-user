@@ -4,7 +4,7 @@ import {
   private_key,
   client_email,
   project_id,
-} from "../hearsome-2022-firebase-adminsdk.json";
+} from "../src/hearsome-2022-firebase-adminsdk.json";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
@@ -29,14 +29,12 @@ app.use(cors());
 /******* Morgan Logger *******/
 app.use(morgan("dev"));
 
-// **********Authentication********
 
 /****** Setting up Express routes *******/
 app.get("/", function (req: Request, res: Response) {
   res.status(200).send("App Working aweee!");
 });
 
-// **********Authorization*********
 
 app.use("/", router);
 

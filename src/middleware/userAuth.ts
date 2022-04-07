@@ -1,10 +1,12 @@
 import express, { Application, Request, Response } from "express";
 import admin from "firebase-admin";
-export abstract class userAuth {
 
+
+export class UserAuth {
+  
   public static verifyToken(req: Request, res: Response, next: Function) {
+    
     if (req.headers.authorization) {
-      console.log(req.headers.authorization);
       admin
         .auth()
         .verifyIdToken(
@@ -23,4 +25,5 @@ export abstract class userAuth {
       res.status(403).send("Unauthorized");
     }
   }
+  
 }
