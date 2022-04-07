@@ -1,2 +1,2 @@
-import { userAuth } from "./userAuth";
-export { userAuth };
+import { UserAuth } from "./userAuth";
+export { UserAuth };
