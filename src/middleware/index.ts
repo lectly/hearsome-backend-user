@@ -1,2 +1,3 @@
 import { UserAuth } from "./userAuth";
-export { UserAuth };
+import { VerifyHeader } from "./verifyHeader";
+export { UserAuth,VerifyHeader };
