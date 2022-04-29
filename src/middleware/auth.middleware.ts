@@ -1,11 +1,8 @@
-import express, { Application, Request, Response } from "express";
+import { Request, Response } from "express";
 import admin from "firebase-admin";
 
-
 export class UserAuth {
-  
   public static verifyToken(req: Request, res: Response, next: Function) {
-    
     if (req.headers.authorization) {
       admin
         .auth()
@@ -19,11 +16,10 @@ export class UserAuth {
           next();
         })
         .catch(() => {
-          res.status(403).send("Unauthorized");
+          res.status(401).send("Unauthorized");
         });
     } else {
-      res.status(403).send("Unauthorized");
+      res.status(401).send("Unauthorized");
     }
   }
-  
 }

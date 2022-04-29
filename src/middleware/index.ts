@@ -1,4 +1,4 @@
-import { UserAuth } from "./userAuth";
-import { VerifyHeader } from "./verifyHeader";
-export {VerifyHeader};
-export { UserAuth };
+import { UserAuth } from "./auth.middleware";
+import { joiMiddleware } from "./joi";
+
+export { UserAuth, joiMiddleware };
