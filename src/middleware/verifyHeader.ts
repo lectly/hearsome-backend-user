@@ -6,7 +6,7 @@ const headerSchema = Joi.object({
 });
 
 export class VerifyHeader {
-  public static verifyAuthentication(
+  public static verifyAuthorization(
     req: Request,
     res: Response,
     next: Function
