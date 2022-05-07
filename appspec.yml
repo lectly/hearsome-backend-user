@@ -38,13 +38,6 @@ files:
 # If you are not running any commands on the instance, then remove
 #   the "hooks" section altogether. A blank or incomplete "hooks" section
 #   may cause associated deployments to fail.
-
-permissions:
-  - object: /
-    pattern: "**"
-    owner: ec2-user
-    group: ec2-user
-
 hooks:
   # For each deployment lifecycle event, specify multiple "location" entries
   #   if you want to run multiple scripts during that event.
@@ -69,22 +62,22 @@ hooks:
   # During the BeforeInstall deployment lifecycle event, run the commands
   #   in the script specified in "location".
   ApplicationStop:
-    - location: scripts/application_stop.sh; PID="$!"
+    - location: scripts/application_stop.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
   BeforeInstall:
     - location: scripts/before_install.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
   # During the AfterInstall deployment lifecycle event, run the commands
   #   in the script specified in "location".
   AfterInstall:
     - location: scripts/after_install.sh
       timeout: 300
-      runas: root
+      runas: ubuntu
   # During the ApplicationInstall deployment lifecycle event, run the commands
   #   in the script specified in "location".
   ApplicationStart:
     - location: scripts/application_start.sh
       timeout: 300
-      runas: root
+      runas: ubuntu

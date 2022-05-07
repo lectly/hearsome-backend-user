@@ -1,3 +1,3 @@
-#!/usr/bin/sh
+#!/usr/bin/bash
 cd /home/ec2-user/server
 npm start

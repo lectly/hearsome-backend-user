@@ -1,2 +1,2 @@
-#!/usr/bin/sh
-kill $PID
+#!/usr/bin/bash
+pkill node
