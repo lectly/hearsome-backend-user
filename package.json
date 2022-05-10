@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/lectly/lectly-backend-user#readme",
   "dependencies": {
-    "aws-sdk": "^2.1131.0",
+    "@aws-sdk/client-s3": "^3.87.0",
+    "@aws-sdk/s3-request-presigner": "^3.87.0",
     "celebrate": "^15.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
