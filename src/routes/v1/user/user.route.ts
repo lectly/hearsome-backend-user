@@ -1,10 +1,8 @@
 import { Router, Request, Response } from "express";
-import { signedURLRoute } from "./signed_url.route";
+import { UserController } from "../../../controller";
+
 const router = Router({ mergeParams: true });
 
-router.route("/").get(function (req: Request, res: Response) {
-  res.status(200).send("Hello World!");
-});
-router.use("/signed_url", signedURLRoute);
+router.use("/signed_url", UserController.getSignedURL);
 
 export { router as userRouter };
