@@ -1,9 +1,6 @@
-import { Router, Request, Response } from "express";
-import {} from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import * as uuid from "uuid";
-
 import { config } from "../config";
 
 const params = {
@@ -12,6 +9,7 @@ const params = {
   expires: 200,
   ContentType: "application/json",
 };
+
 const client = new S3Client({
   credentials: {
     accessKeyId: config.AWS_KEY_ID,
@@ -21,6 +19,7 @@ const client = new S3Client({
 });
 
 const command = new PutObjectCommand(params);
+
 export async function getSignedURL() {
   return await getSignedUrl(client, command, { expiresIn: 3600 });
 }
