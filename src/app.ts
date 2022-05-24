@@ -3,7 +3,6 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import admin, { ServiceAccount, credential } from "firebase-admin";
 import morgan from "morgan";
 import cors from "cors";
-import { config } from "./config";
 
 import { router } from "./routes";
 import { joiMiddleware } from "./middleware";
@@ -13,9 +12,9 @@ const PORT = process.env.PORT || 5000;
 
 //******** Setting up Firebase app **********
 const serviceAccount: ServiceAccount = {
-  privateKey: config.FIREBASE_ADMIN_PRIVATE_KEY,
-  clientEmail: config.FIREBASE_ADMIN_CLIENT_EMAIL,
-  projectId: config.FIREBASE_ADMIN_PROJECT_ID,
+  privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+  clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
+  projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
 };
 admin.initializeApp({
   credential: credential.cert(serviceAccount),
