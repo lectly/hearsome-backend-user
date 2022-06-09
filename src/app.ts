@@ -4,6 +4,7 @@ import admin, { ServiceAccount, credential } from "firebase-admin";
 import morgan from "morgan";
 import cors from "cors";
 
+import { config } from "./config";
 import { router } from "./routes";
 import { joiMiddleware } from "./middleware";
 
