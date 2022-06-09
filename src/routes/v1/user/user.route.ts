@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import { UserController } from "../../../controller";
 
 const router = Router({ mergeParams: true });
