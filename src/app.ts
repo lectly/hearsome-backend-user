@@ -1,21 +1,26 @@
 import "dotenv/config"; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
 import express, { Application, Request, Response, NextFunction } from "express";
 import admin, { ServiceAccount, credential } from "firebase-admin";
-import morgan from "morgan";
 import cors from "cors";
 
 import { router } from "./routes";
 import { joiMiddleware } from "./middleware";
+import { Environment } from "./utils";
 
 /******* Environment variables *******/
 const PORT = process.env.PORT || 5000;
+const privateKey =
+  process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n") || "";
+const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL || "";
+const projectId = process.env.FIREBASE_ADMIN_PROJECT_ID || "";
 
 //******** Setting up Firebase app **********
 const serviceAccount: ServiceAccount = {
-  privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-  clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
-  projectId: process.env.FIREBASE_ADMIN_PROJECT_ID,
+  privateKey,
+  clientEmail,
+  projectId,
 };
+
 admin.initializeApp({
   credential: credential.cert(serviceAccount),
 });
@@ -26,7 +31,10 @@ app.use(express.json());
 app.use(cors());
 
 /******* Morgan Logger *******/
-app.use(morgan("dev"));
+if (Environment.isProduction()) {
+  const morgan = require("morgan");
+  app.use(morgan("dev"));
+}
 
 /****** Setting up Express routes *******/
 app.get("/", function (req: Request, res: Response) {
