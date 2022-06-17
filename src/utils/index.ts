@@ -1,2 +1,2 @@
-import { getSignedURL } from "./getSignedURL.utils";
-export { getSignedURL };
+import { Environment } from "./environment.util";
+export { Environment };
