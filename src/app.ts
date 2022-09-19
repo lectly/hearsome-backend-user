@@ -2,6 +2,7 @@ import "dotenv/config"; // see https://github.com/motdotla/dotenv#how-do-i-use-d
 import express, { Application, Request, Response, NextFunction } from "express";
 import admin, { ServiceAccount, credential } from "firebase-admin";
 import cors from "cors";
+import favicon from "serve-favicon";
 
 import { router } from "./routes";
 import { joiMiddleware } from "./middleware";
@@ -29,12 +30,13 @@ admin.initializeApp({
 const app: Application = express();
 app.use(express.json());
 app.use(cors());
+app.use(favicon("./favicon.ico"));
 
 /******* Morgan Logger *******/
-if (Environment.isProduction()) {
-  const morgan = require("morgan");
-  app.use(morgan("dev"));
-}
+// if (!Environment.isProduction()) {
+//   const morgan = require("morgan");
+//   app.use(morgan("dev"));
+// }
 
 /****** Setting up Express routes *******/
 app.get("/", function (req: Request, res: Response) {
