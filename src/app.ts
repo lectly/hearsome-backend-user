@@ -4,6 +4,7 @@ import admin, { ServiceAccount, credential } from "firebase-admin";
 import cors from "cors";
 import favicon from "serve-favicon";
 
+import { config } from "./config";
 import { router } from "./routes";
 import { joiMiddleware } from "./middleware";
 import { Environment } from "./utils";

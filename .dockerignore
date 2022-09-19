@@ -1,0 +1,7 @@
+.git
+.cache
+node_modules
+npm-debug.log
+.idea 
+ 14  
+Dockerfile
