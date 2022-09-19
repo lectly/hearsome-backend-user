@@ -3,11 +3,8 @@ import express, { Application, Request, Response, NextFunction } from "express";
 import admin, { ServiceAccount, credential } from "firebase-admin";
 import cors from "cors";
 import favicon from "serve-favicon";
-
-import { config } from "./config";
 import { router } from "./routes";
 import { joiMiddleware } from "./middleware";
-import { Environment } from "./utils";
 
 /******* Environment variables *******/
 const PORT = process.env.PORT || 5000;
